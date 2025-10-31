@@ -11,28 +11,18 @@ import produtoModel from "../models/produtoModel";
         return Product
     }
     const creatnewProduct = async (req:Request, res:Response) => {
-        const {name,description,price,stock,createdAt,updateAt} = body
-        const query = 'INSERT INTO product(name,description,price,stock,createdAt,updateAt) values(?,?,?,?,?,?)'
-        const newProduct = await produtoModel.creatnewProduct(query,[name,description,price,stock,createdAt ?? new Date(),updateAt ?? Date()])
-        return newProduct
+      
+        const newProduct = await produtoModel.creatnewProduct(req.body)
+       return res.status(200).json (newProduct)
     }
     const editPartialProduct = async (req:Request, res:Response) => {
 
-        delete update.createdAt;
-        if(!update.updateAt){
-            update.updateAt = new Date()
-        }
-
-        const fields = Object.keys(update)
-        const values = Object.values(update)
-        const setclause = fields.map(field => `${field}=?`).join(',')
-        const query = `UPDATE product set ${setclause}, updateAt= NOW() WHERE id=?`
-        const editProduct = await produtoModel.editPartialProduct(query,[...values, id])
-        return editProduct
+        const editProduct = await produtoModel.editPartialProduct(Number(req.params.id),req.body)
+        return res.status(200).json (editProduct)
 
     }
     const removeProduct = async (req:Request, res:Response) => {
-        const deleteProduct = await produtoModel.removeProduct(`DELETE FROM product WHERE id=${id}`)
+        const deleteProduct = await produtoModel.removeProduct(Number(req.params.id))
         return deleteProduct
     }
 
