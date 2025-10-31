@@ -15,7 +15,21 @@ import { connectionModule } from "./connectionModel";
         const [newProduct] = await connectionModule.execute(query,[name,description,price,stock,createdAt ?? new Date(),updateAt ?? Date()])
         return newProduct
     }
-    const editPartialProduct = async () => {}
+    const editPartialProduct = async (id:number, update: Partial<IProduct>) => {
+
+        delete update.createdAt;
+        if(!update.updateAt){
+            update.updateAt = new Date()
+        }
+
+        const fields = Object.keys(update)
+        const values = Object.values(update)
+        const setclause = fields.map(fields => `${field}=?`).join(',')
+        const query = `UPDATE product set ${setclause}, updateAt= NOW() WHERE id=?`
+        const [editProduct] = await connectionModule.execute(query,[...values, id])
+        return editProduct
+
+    }
     const removeProduct = async () => {}
 
 
