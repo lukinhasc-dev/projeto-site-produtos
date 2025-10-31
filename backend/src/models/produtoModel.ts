@@ -24,13 +24,16 @@ import { connectionModule } from "./connectionModel";
 
         const fields = Object.keys(update)
         const values = Object.values(update)
-        const setclause = fields.map(fields => `${field}=?`).join(',')
+        const setclause = fields.map(field => `${field}=?`).join(',')
         const query = `UPDATE product set ${setclause}, updateAt= NOW() WHERE id=?`
         const [editProduct] = await connectionModule.execute(query,[...values, id])
         return editProduct
 
     }
-    const removeProduct = async () => {}
+    const removeProduct = async (id:number) => {
+        const deleteProduct = await connectionModule.execute(`DELETE FROM product WHERE id=${id}`)
+        return deleteProduct
+    }
 
 
 
