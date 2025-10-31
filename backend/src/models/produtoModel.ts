@@ -1,3 +1,4 @@
+import { IProduct } from "../interfaces/types";
 import { connectionModule } from "./connectionModel";
 
     const getAllProduct =  async () => {
@@ -8,7 +9,12 @@ import { connectionModule } from "./connectionModel";
             const [Product] = await connectionModule.execute(`SELECT * FROM product where id=${id}`)
         return Product
     }
-    const creatnewProduct = async () => {}
+    const creatnewProduct = async (body:IProduct) => {
+        const {name,description,price,stock,createdAt,updateAt} = body
+        const query = 'INSERT INTO product(name,description,price,stock,createdAt,updateAt) values(?,?,?,?,?,?)'
+        const [newProduct] = await connectionModule.execute(query,[name,description,price,stock,createdAt ?? new Date(),updateAt ?? Date()])
+        return newProduct
+    }
     const editPartialProduct = async () => {}
     const removeProduct = async () => {}
 
