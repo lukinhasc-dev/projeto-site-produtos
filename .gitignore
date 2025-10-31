@@ -1,0 +1,132 @@
+# ======================================
+# SISTEMA OPERACIONAL
+# ======================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ======================================
+# AMBIENTES / DEPENDÊNCIAS
+# ======================================
+node_modules/
+bower_components/
+jspm_packages/
+vendor/
+.env
+.env.local
+.env.*.local
+
+# ======================================
+# BUILD / DIST / TEMP
+# ======================================
+dist/
+build/
+out/
+coverage/
+.tmp/
+.cache/
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ======================================
+# PYTHON
+# ======================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+venv/
+ENV/
+env/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ======================================
+# JAVA
+# ======================================
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.ipr
+*.iws
+target/
+.gradle/
+build/
+
+# ======================================
+# FRONTEND
+# ======================================
+# React / Vue / Angular
+.cache/
+.next/
+.nuxt/
+.svelte-kit/
+vite/dist/
+.vite/
+.storybook/
+storybook-static/
+
+# ======================================
+# IDEs E EDITORES
+# ======================================
+# VSCode
+.vscode/
+.history/
+
+# JetBrains (IntelliJ, PyCharm, WebStorm, etc)
+.idea/
+*.iml
+out/
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+# ======================================
+# OUTROS
+# ======================================
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.pid
+*.seed
+*.pid.lock
+*.tgz
+*.tar.gz
+*.zip
+
+# ======================================
+# CONFIGURAÇÕES SENSÍVEIS
+# ======================================
+*.key
+*.crt
+*.pem
+*.p12
+*.cert
+secrets.*
